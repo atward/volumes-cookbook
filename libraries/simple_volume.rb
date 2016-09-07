@@ -106,13 +106,13 @@ module Metachef
     # volume was resized, so mark it as no longer needing resize
     def resized!
       self[:resized] = true
-      node[:volumes][name][:resized] = true
+      node.override[:volumes][name][:resized] = true
     end
 
     # volume was formatted, so mark it as no longer needing format
     def formatted!
       self[:formatted] = true
-      node[:volumes][name][:formatted] = true
+      node.override[:volumes][name][:formatted] = true
     end
 
     # On Xen virtualization systems (eg EC2), the volumes are *renamed* from
