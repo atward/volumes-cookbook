@@ -31,7 +31,7 @@ volumes(node).each do |vol_name, vol|
   make_dir_rsrc = directory(vol.mount_point) do
     recursive   true
     owner       vol.owner
-    group       vol.owner
+    group       vol.group or vol.owner
     action      :nothing
   end
 
@@ -56,5 +56,6 @@ volumes(node).each do |vol_name, vol|
 
   make_dir_rsrc.run_action(:create)
   vol_mount_rsrc.run_action(:mount)
+  make_dir_rsrc.run_action(:create) # Rerun to ensure mounted volume permissions
 
 end
