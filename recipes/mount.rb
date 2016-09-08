@@ -33,6 +33,7 @@ volumes(node).each do |vol_name, vol|
     owner       vol.owner
     group       vol.owner
     action      :nothing
+    not_if{ vol.mounted? }
   end
 
   #
