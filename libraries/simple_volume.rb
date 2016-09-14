@@ -54,7 +54,12 @@ module Metachef
     end
 
     def ready_to_format?
-      !!( formattable? && attached? && (not mounted?) && (`file -s #{device}`.chomp =~ /: data/) )
+      check_command = case self['fstype']
+                      when 'xfs' then "xfs_admin -l #{device}"
+                      when 'ext2', 'ext3', 'ext4' then "tune2fs -l #{device}"
+                      else "file -s #{device} | grep '^#{device}: data$'"
+                      end
+      !!( formattable? && attached? && (not mounted?) && !system(check_command) )
     end
 
     def in_raid?
