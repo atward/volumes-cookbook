@@ -3,7 +3,7 @@ maintainer       "Philip (flip) Kromer - Infochimps, Inc"
 maintainer_email "coders@infochimps.com"
 license          "Apache 2.0"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "3.1.0"
+version          "3.1.1"
 
 issues_url 'https://github.com/atward/volumes-cookbook/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/atward/volumes-cookbook' if respond_to?(:source_url)
