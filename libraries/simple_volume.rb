@@ -39,7 +39,7 @@ module Metachef
 
     # true if the volume is meant to be mounted
     def mountable?
-      !!( mount_point && (self['mountable'].to_s != 'false') && (not in_raid?) )
+      !!( attached? && mount_point && (self['mountable'].to_s != 'false') && (not in_raid?) )
     end
 
     # true if the volume is meant to be resized
