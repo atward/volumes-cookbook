@@ -27,7 +27,7 @@ volumes(node).each do |vol_name, vol|
   Chef::Log.info(vol.inspect)
   next unless vol.formattable?
 
-  if not vol.ready_to_format? then Chef::Log.info("Skipping format of volume #{vol_name}: not formattable (#{vol.inspect})") ; next ; end
+  if not vol.ready_to_format? then Chef::Log.info("Skipping format of volume #{vol_name}: not ready to format (#{vol.inspect})") ; next ; end
 
   f = bash "Format #{vol_name} as #{vol.fstype}" do
     code        "mkfs -t #{vol.fstype} #{vol.device}"
