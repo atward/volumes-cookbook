@@ -59,3 +59,8 @@ volumes(node).each do |vol_name, vol|
   vol_mount_rsrc.run_action(:mount)
 
 end
+
+ohai 'reload mountpoint' do
+  plugin 'filesystem'
+  action :nothing
+end.run_action(:reload)
